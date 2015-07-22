@@ -27,12 +27,18 @@ public class StringConversionsTest {
 	}
 
 	@Test(expected = NumberFormatException.class)
+	public void stringToLongTestInvalidInput() {
+
+		conversion.stringToLong("-922337203h");
+	}
+
+	@Test(expected = RuntimeException.class)
 	public void stringToLongTestUnderflow() {
 
 		conversion.stringToLong("-9223372036854775809");
 	}
 
-	@Test(expected = NumberFormatException.class)
+	@Test(expected = RuntimeException.class)
 	public void stringToLongTestOverflow() {
 
 		conversion.stringToLong("9223372036854775808");

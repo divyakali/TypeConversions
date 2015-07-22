@@ -19,19 +19,20 @@ public class StringConversions {
 
 		long i = 0;
 		char[] letters = str.toCharArray();
+		if (!str.matches("-?[0-9]+"))
+			throw new NumberFormatException("Not a number");
 		// check if number is negative and parse
 		if (str.startsWith("-")) {
 			// if number has more than 20 characters(includes -)
 			if (str.length() > 20)
-				throw new NumberFormatException(
-						"Number to convert is too small");
+				throw new RuntimeException("Number to convert is too small");
 			else
 				letters = str.substring(1).toCharArray();
 		}
 		if (!str.matches("[0-9]{1,19}")) {
 			// if number has more than 19 characters
 			if (str.length() > 20)
-				throw new NumberFormatException("Number to convert is too big");
+				throw new RuntimeException("Number to convert is too big");
 		}
 
 		for (char ch : letters) {
@@ -43,7 +44,11 @@ public class StringConversions {
 							.getNumericValue(ch))))
 				i = (i * 10) + Character.getNumericValue(ch);
 			else {
-				throw new NumberFormatException("Number too big");
+				if (str.startsWith("-"))
+					throw new RuntimeException("Underflow during conversion");
+				else
+					throw new RuntimeException(
+							"Overflow during conversion");
 			}
 		}
 		if (str.startsWith("-"))

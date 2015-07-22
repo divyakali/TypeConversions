@@ -13,4 +13,4 @@ We loop to add digits one at a time. A simple check to see that result before ad
 <br/>
 <br/>
 Improvements/Limitations:
-The documentation does not mention if the Strings passed are in decimal format. For future implementations, we can test the format of the number(in string) and convert it to decimal before parsing to long. I used integers since the problem statements refers only to integers. If we want it to work for any data type, we can do so by changing the Trinary Node class to have a generic data type and changing the comparison logic.
+The documentation does not mention if the Strings passed are in decimal format. For future implementations, we can test the format of the number(in string) and convert it to decimal before parsing to long. I used integers since the problem statements refers only to integers.
